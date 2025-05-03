@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New</title>
+  </head>
+  
+  <body>
+    <%- include("./partial/nav.ejs") %>
+    <div class="form">
+      <form action="/new" method="POST">
+        <label for="model">Model</label><br />
+        <small>Enter the car model</small>
+        <input
+          type="text"
+          name="model"
+          id="model"
+          required
+          pattern="^[a-zA-Z0-9\s]*$"
+        />
+        <br />
+        <label for="year">year</label><br />
+        <small>Enter the car year</small>
+        <input
+          type="text"
+          name="model"
+          id="year"
+          required
+          pattern="^((20)(0[0-9]|1[0-9]|2[0-5])|(19)[0-9]{2}){0,4}$"
+        />
+        <br />
+        <button type="submit">submit</button>
+      </form>
+    </div>
+  </body>
+</html>
