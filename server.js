@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
 app.get("/", (req, res) => {
-  res.send("app is running");
+  res.render("index.ejs");
 });
 
 app.get("/new", (req, res) => {
@@ -26,6 +26,70 @@ app.post("/new", async (req, res) => {
       year: json.model[1],
     });
     res.send(newCar);
+  }
+});
+
+app.get("/find", (req, res) => {
+  res.render("find.ejs");
+});
+
+app.post("/find", async (req, res) => {
+  try {
+    const carId = req.body.carid;
+
+    const car = await Cars.findById(carId);
+
+    res.send(car);
+    console.log("found");
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.get("/update", (req, res) => {
+  res.render("update.ejs");
+});
+
+app.post("/update", async (req, res) => {
+  try {
+    const CID = req.body.CID;
+    const Carmodel = req.body.cmodel;
+    const Cyear = req.body.year;
+
+    if (CID === undefined) {
+      res.send("id is undefine");
+    }
+
+    const car = await Cars.findByIdAndUpdate(CID, {
+      model: Carmodel,
+      year: Cyear,
+    });
+
+    res.send(car);
+    console.log("updated");
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.get("/delete", (req, res) => {
+  res.render("delete.ejs");
+});
+
+app.post("/delete", async (req, res) => {
+  try {
+    const CID = req.body.CID;
+
+    if (CID === undefined) {
+      res.send("id is undefine");
+    }
+
+    const car = await Cars.findOneAndDelete(CID);
+
+    res.send(car);
+    console.log("deleted");
+  } catch (error) {
+    console.log(error.message);
   }
 });
 

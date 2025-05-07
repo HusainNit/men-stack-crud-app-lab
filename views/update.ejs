@@ -3,19 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>New</title>
+    <title>update</title>
   </head>
 
   <body>
     <%- include("./partial/nav.ejs") %>
     <div class="form">
-      <form action="/new" method="POST">
-        <label for="model">Model</label><br />
+      <form action="/update" method="POST">
+        <label for="CID">car id</label><br />
+        <small>Enter the car id</small>
+        <input
+          type="text"
+          name="CID"
+          id="CID"
+          required
+          pattern="^[a-zA-Z0-9\s]*$"
+        />
+        <br />
+        <label for="cmodel">Model</label><br />
         <small>Enter the car model</small>
         <input
           type="text"
-          name="model"
-          id="model"
+          name="cmodel"
+          id="cmodel"
           required
           pattern="^[a-zA-Z0-9\s]*$"
         />

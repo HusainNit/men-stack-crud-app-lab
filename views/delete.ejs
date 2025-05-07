@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>delete</title>
+  </head>
+
+  <body>
+    <%- include("./partial/nav.ejs") %>
+    <div class="form">
+      <form action="/delete" method="POST">
+        <label for="CID">car id</label><br />
+        <small>Enter the car id</small>
+        <input
+          type="text"
+          name="CID"
+          id="CID"
+          required
+          pattern="^[a-zA-Z0-9\s]*$"
+        />
+        <br />
+        <button type="submit">submit</button>
+      </form>
+    </div>
+  </body>
+</html>
